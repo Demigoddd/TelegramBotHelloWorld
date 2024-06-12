@@ -18,7 +18,10 @@ bot.telegram.setMyCommands(BOT_COMMANDS);
 
 const gameResult = {};
 
-bot.start((ctx) => ctx.reply('Welcome to the BOT!'));
+bot.start((ctx) => {
+  const payload = Boolean(ctx.payload) ? `Payload is ${ctx.payload}` : '';
+  ctx.reply(`Welcome to the BOT! ${payload}`);
+});
 bot.command('info', (ctx) => ctx.reply('👍'));
 bot.command('open_menu', (ctx) =>
   ctx.reply('Choose option..', BOT_REPLY_KEYBOARD_MARKUP_OPEN)
